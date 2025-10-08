@@ -41,7 +41,9 @@ esac
 
 export BUILD_PRESET SYSTEM_PROFILE
 
-rm -rf export build
-flatpak-builder --ccache build dev.eden_emu.eden.yml
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user --noninteractive org.flatpak.Builder
+flatpak run org.flatpak.Builder --ccache --force-clean --install-deps-from=flathub --user build dev.eden_emu.eden.yml
+rm -rf export
 flatpak build-export export build
 exec flatpak build-bundle export eden.flatpak dev.eden_emu.eden --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
