@@ -64,6 +64,11 @@ modules:
     sources:
       - type: git
         url: https://git.eden-emu.dev/eden-emu/eden.git
+        tag: v0.0.4-rc1
+        commit: 15becaa5a327e714f4650ef698b2a4ec25ba40d5
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+(?:-rc[\d]+)?)$
       - type: file
         path: dev.eden_emu.eden.metainfo.xml
       - type: file
@@ -118,6 +123,10 @@ modules:
         url: https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.32.10.tar.gz
         sha512: d5622d6bb7266f7942a7b8ad43e8a22524893bf0c2ea1af91204838d9b78d32768843f6faa248757427b8404b8c6443776d4afa6b672cd8571a4e0c03a829383
       - type: archive
+        dest: .cache/cpm/sdl2/steamdeck
+        url: https://github.com/libsdl-org/SDL/archive/cc016b0046.zip
+        sha512: 34d5ef58da6a4f9efa6689c82f67badcbd741f5a4f562a9c2c30828fa839830fb07681c5dc6a7851520e261c8405a416ac0a2c2513b51984fb3b4fa4dcb3e20b
+      - type: archive
         dest: .cache/cpm/spirv-headers/01e0
         url: https://github.com/KhronosGroup/SPIRV-Headers/archive/01e0577914.zip
         sha512: d0f905311faf7d743de686fdf241dc4cb0a4f08e2184f5a3b3b2946e680db3cd89eeb72954eafe6fa457f93550e27d516575c8709cb134d8aecc0b43064636ce
@@ -150,9 +159,10 @@ modules:
         url: https://github.com/martinus/unordered_dense/archive/refs/tags/v4.5.0.tar.gz
         sha512: f9c819e28e1c1a387acfee09277d6af5e366597a0d39acf1c687acf0608a941ba966af8aaebdb8fba0126c7360269c4a51754ef4cab17c35c01a30215f953368
       - type: archive
-        dest: .cache/cpm/nx_tzdb/250725
-        url: https://git.crueter.xyz/misc/tzdb_to_nx/releases/download/250725/250725.zip
-        sha512: 8f60b4b29f285e39c0443f3d5572a73780f3dbfcfd5b35004451fadad77f3a215b2e2aa8d0fffe7e348e2a7b0660882b35228b6178dda8804a14ce44509fd2ca
+        dest: .cache/cpm/nx_tzdb/091025
+        url: https://git.crueter.xyz/misc/tzdb_to_nx/releases/download/091025/091025.tar.gz
+        sha512: 87abb2aeca716d5d77b05317086dbc2f8acfc2f3f76ce4778345ee3df19973e6cd8ecbf16cfab5ad94c9636a6c44fd3588f9aadd3cba89403cfd56c8bec645c5
+        dest-filename: 091025.tar
       - type: archive
         dest: .cache/cpm/mcl/7b08
         url: https://github.com/azahar-emu/mcl/archive/7b08d83418.zip
@@ -169,3 +179,7 @@ modules:
         dest: .cache/cpm/quazip-qt6/f838
         url: https://github.com/crueter/quazip-qt6/archive/f838774d63.zip
         sha512: 9f629a438699801244a106c8df6d5f8f8d19e80df54f530a89403a10c8c4e37a6e95606bbdd307f23636961e8ce34eb37a2186d589a1f227ac9c8e2c678e326e
+      - type: archive
+        dest: .cache/cpm/frozen/61dc
+        url: https://github.com/serge-sans-paille/frozen/archive/61dce5ae18.zip
+        sha512: 1ae3d073e659c1f24b2cdd76379c90d6af9e06bc707d285a4fafce05f7a4c9e592ff208c94a9ae0f0d07620b3c6cec191f126b03d70ad4dfa496a86ed5658a6d
