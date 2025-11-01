@@ -10,8 +10,7 @@ build-options:
 command: eden-launcher
 finish-args:
   - --device=all
-  - --socket=fallback-x11
-  - --socket=wayland
+  - --socket=x11
   - --socket=pulseaudio
   - --share=network
   - --share=ipc
