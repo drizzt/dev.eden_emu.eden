@@ -1,12 +1,12 @@
 app-id: dev.eden_emu.eden
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm20
+  - org.freedesktop.Sdk.Extension.llvm21
 build-options:
-  cflags: -O3
-  cxxflags: -O3
+  cflags: -Ofast -pipe
+  cxxflags: -Ofast -pipe
 command: eden-launcher
 finish-args:
   - --device=all
@@ -18,13 +18,14 @@ finish-args:
   - --filesystem=home:ro
   - --filesystem=/run/media:ro
   - --talk-name=org.freedesktop.login1.Manager
+  - --env=QT_QPA_PLATFORM=xcb
 modules:
   - name: eden
     buildsystem: cmake-ninja
     builddir: true
     build-options:
-      append-path: /usr/lib/sdk/llvm20/bin
-      prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
+      append-path: /usr/lib/sdk/llvm21/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
       strip: true
       no-debuginfo: true
       env:
@@ -33,6 +34,7 @@ modules:
         CXX: clang++
         RANLIB: llvm-ranlib
     config-opts:
+      - -DCMAKE_EXE_LINKER_FLAGS=-Wl,--as-needed
       - -Wno-dev
       - -DYUZU_USE_CPM:BOOL=ON
       # Taken from .ci/linux/build.sh
@@ -161,14 +163,6 @@ modules:
         dest: .cache/cpm/mcl/7b08
         url: https://github.com/azahar-emu/mcl/archive/7b08d83418.zip
         sha512: f943bac39c1879986decad7a442ff4288eaeca4a2907684c7914e115a55ecc43c2782ded85c0835763fe04e40d5c82220ce864423e489e648e408a84f54dc4f3
-      - type: archive
-        dest: .cache/cpm/zycore/75a3
-        url: https://github.com/zyantific/zycore-c/archive/75a36c45ae.zip
-        sha512: 15aa399f39713e042c4345bc3175c82f14dca849fde2a21d4f591f62c43e227b70d868d8bb86beb5f4eb68b1d6bd3792cdd638acf89009e787e3d10ee7401924
-      - type: archive
-        dest: .cache/cpm/zydis/c2d2
-        url: https://github.com/zyantific/zydis/archive/c2d2bab025.zip
-        sha512: 7b48f213ff7aab2926f8c9c65195959143bebbfb2b9a25051ffd8b8b0f1baf1670d9739781de674577d955925f91ac89376e16b476a03828c84e2fd765d45020
       - type: archive
         dest: .cache/cpm/quazip-qt6/f838
         url: https://github.com/crueter/quazip-qt6/archive/f838774d63.zip
