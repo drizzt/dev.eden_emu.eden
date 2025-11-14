@@ -69,9 +69,10 @@ modules:
         path: dev.eden_emu.eden.metainfo.xml
       - type: file
         path: eden-launcher.sh
-      - type: file
-        path: compatibility_list.json
+      - type: inline
         dest: dist/compatibility_list
+        dest-filename: compatibility_list.json
+        contents:
       - type: archive
         dest: .cache/cpm/boost/1.89.0
         url: https://github.com/boostorg/boost/releases/download/boost-1.89.0/boost-1.89.0-cmake.tar.xz
@@ -155,10 +156,10 @@ modules:
         url: https://github.com/martinus/unordered_dense/archive/refs/tags/v4.5.0.tar.gz
         sha512: f9c819e28e1c1a387acfee09277d6af5e366597a0d39acf1c687acf0608a941ba966af8aaebdb8fba0126c7360269c4a51754ef4cab17c35c01a30215f953368
       - type: archive
-        dest: .cache/cpm/nx_tzdb/091025
-        url: https://git.crueter.xyz/misc/tzdb_to_nx/releases/download/091025/091025.tar.gz
-        sha512: 87abb2aeca716d5d77b05317086dbc2f8acfc2f3f76ce4778345ee3df19973e6cd8ecbf16cfab5ad94c9636a6c44fd3588f9aadd3cba89403cfd56c8bec645c5
-        dest-filename: 091025.tar
+        dest: .cache/cpm/nx_tzdb/121125
+        url: https://git.crueter.xyz/misc/tzdb_to_nx/releases/download/121125/121125.tar.gz
+        sha512: dc37a189a44ce8b5c988ca550582431a6c7eadfd3c6e709bee6277116ee803e714333e85c9e6cbb5c69346a14d6f2cc7ed96e8aa09cc5fb8a89f945059651db6
+        dest-filename: 121125.tar.gz
       - type: archive
         dest: .cache/cpm/mcl/7b08
         url: https://github.com/azahar-emu/mcl/archive/7b08d83418.zip
